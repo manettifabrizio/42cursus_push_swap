@@ -6,67 +6,62 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:41:26 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/04 12:43:18 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/05 17:46:39 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		check_errors(char *s)
-{
-	int		i;
-
-	i = -1;
-	while (s[++i])
-		if (!(ft_isdigit(s[i]) || ft_isspace(s[i])))
-		{
-			ft_putstr_fd("\033[0;31mError\033[0m\n", STDERR_FILENO);
-			return (1);
-		}
-	return (0);
-}
-
-int		*str_to_arr_i(char *s, size_t *len)
+static int		*str_to_arr_i(char **av, int ac)
 {
 	int		i;
 	int		*a;
-	char	**tmp;
+	int		size;
 
-	if (check_errors(s))
-		return (NULL);
-	tmp = ft_split(s, ' ');
-	*len = ft_arrlen(tmp);
-	if (!(a = malloc((*len + 1) * sizeof(int))))
+	size = ac - 1;
+	if (!(a = malloc(size * sizeof(int))))
 		return (NULL);
 	i = -1;
-	while (tmp[++i])
-		a[i] = ft_atoi(tmp[1]);
-	a[i] = 0;
-	ft_free_array(tmp);
+	while (av[++i + 1])
+	{
+		if (!(check_stack(av[i + 1])) || !(check_dup(av)))
+			return (NULL);
+		a[i] = ft_atoi(av[i + 1]);
+	}
 	return (a);
 }
 
-// void	reading()
-// {
-// 	char	buf[3];
-	
-// }
-
-int		main(int ac, char **av)
+static int		read_inst_and_execute(t_stack *s)
 {
-	int		*a;
-	int		*b;
-	size_t	len;
+	char	*inst;
 
-	if (ac != 2)
+	while (get_next_line(STDIN_FILENO, &inst) > 0)
+		if (!(execute_instructions(s, inst)))
+			return (0);
+	return (1);
+}
+
+int				main(int ac, char **av)
+{
+	t_stack	s;
+
+	if (ac < 2)
 		return (0);
-	len = 0;
-	if (!(a = str_to_arr_i(av[1], &len)))
-		return (0);
-	if (!(b = malloc((len + 1) * sizeof(int))))
-		return (0);
-	// while (reading())
-	free(a);
-	free(b);
+	if (!(s.a = str_to_arr_i(av, ac)))
+		return (error(&s));
+	s.size_a = ac - 1;
+	// ft_print_array_i(s.a, s.size_a, "a");
+	s.size_b = 0;
+	s.size_max = s.size_a;
+	if (!(s.b = malloc((s.size_max + 1) * sizeof(int))))
+		return (error(&s));
+	if (!(read_inst_and_execute(&s)))
+		return (error(&s));
+	if (stack_is_sort(s.a, s.size_a) && s.size_b == 0)
+		ft_putstr(OK);
+	else
+		ft_putstr(KO);
+	free(s.a);
+	free(s.b);
 	return (0);
 }

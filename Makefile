@@ -6,13 +6,18 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/26 17:06:32 by fmanetti          #+#    #+#              #
-#    Updated: 2021/04/04 12:09:40 by fmanetti         ###   ########.fr        #
+#    Updated: 2021/04/05 17:49:31 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	Checker
+NAME		=	push_swap
+CHECK		=	checker
 
-FILES		=	checker.c
+FILES		=	checker.c					\
+				execute_instructions.c		\
+				instructions.c				\
+				stack_utils.c				\
+				check_errors.c
 
 HFILES		=	push_swap.h
 
@@ -29,16 +34,16 @@ CC			= 	clang
 CFLAGS		=   -I include/ -Wall -Wextra -Werror
 FSANITIZE	= 	-g3 -O0 -fsanitize=address
 
-RED			=	\033[0;31m
-GREEN		=	\033[0;32m
-WHITE		=	\033[0m
+RED			=	\e[0;31m
+GREEN		=	\e[0;32m
+WHITE		=	\e[0m
 
-all: $(NAME)
+all: $(CHECK)
 
-$(NAME): $(OBJ) $(HEADERS) $(INCLUDE)
-	@printf "[ $(NAME) ] Compiling...\r"
-	@($(CC) -o $(NAME) $(SOURCE) $(INCLUDE) $(CFLAGS) $(FSANITIZE))
-	@printf "[ $(NAME) ] Created $(GREEN)Successfully\n$(WHITE)" $(SUCCESS)
+$(CHECK): $(OBJ) $(HEADERS) $(INCLUDE)
+	@printf "[ $(CHECK) ] Compiling...\r"
+	@($(CC) -o $(CHECK) $(SOURCE) $(INCLUDE) $(CFLAGS) $(FSANITIZE))
+	@printf "[ $(CHECK) ] Created $(GREEN)Successfully\n$(WHITE)" $(SUCCESS)
 
 lib:
 	@make re bonus -C include/libft
@@ -54,9 +59,9 @@ clean:
 	@printf "Object files ${RED}removed\n${WHITE}"
 
 fclean: clean
-	@/bin/rm -rf $(NAME)*
-	@/bin/rm -rf .vscode .minish_history
-	@printf "[ $(NAME) ] ${RED}removed\n${WHITE}"
+	@/bin/rm -rf $(CHECK)*
+	@/bin/rm -rf .vscode
+	@printf "[ $(CHECK) ] ${RED}removed\n${WHITE}"
 
 re: fclean all
 
