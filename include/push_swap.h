@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:43:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/05 17:40:51 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/13 17:28:21 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_stack
 	size_t		size_max;
 }				t_stack;
 
+int				create_stacks(int ac, char **av, t_stack *s);
 
 // INSTRUCTIONS
 int				execute_instructions(t_stack *s, char *inst);

@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 17:50:17 by fmanetti          #+#    #+#              #
-#    Updated: 2021/04/13 16:05:01 by fmanetti         ###   ########.fr        #
+#    Updated: 2021/04/13 18:15:15 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,8 +90,6 @@ HEADERS			=	$(addprefix $(HFILES_PATH), $(HFILES))
 
 OBJ				=	$(SOURCE:%.c=%.o)
 OBJB			=	$(BSOURCE:%.c=%.o)
-
-CC				= 	clang
 
 CFLAGS			=   -I $(HFILES_PATH) -Wall -Wextra -Werror
 FSANITIZE		= 	-g3 -O0 -fsanitize=address
