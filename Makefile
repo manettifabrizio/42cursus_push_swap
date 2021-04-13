@@ -6,62 +6,65 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/26 17:06:32 by fmanetti          #+#    #+#              #
-#    Updated: 2021/04/05 17:49:31 by fmanetti         ###   ########.fr        #
+#    Updated: 2021/04/13 16:25:58 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	push_swap
-CHECK		=	checker
+NAME			=	push_swap
+CHECK			=	checker
 
-FILES		=	checker.c					\
-				execute_instructions.c		\
-				instructions.c				\
-				stack_utils.c				\
-				check_errors.c
+FILES			=	checker.c					\
+					execute_instructions.c		\
+					instructions.c				\
+					stack_utils.c				\
+					check_errors.c
+FILES_PATH		=	./srcs/
 
-HFILES		=	push_swap.h
+HFILES			=	push_swap.h
+HFILES_PATH		=	./include/
 
-LIB			=	libft.a
+LIB				=	libft.a
+LIB_PATH		=	./include/libft/
 
-SOURCE		=	$(addprefix ./srcs/, $(FILES))
-HEADERS		=	$(addprefix ./include/, $(HFILES))
-INCLUDE		=	$(addprefix ./include/libft/, $(LIB))
+SOURCE			=	$(addprefix $(FILES_PATH), $(FILES))
+HEADERS			=	$(addprefix $(HFILES_PATH), $(HFILES))
+LIBRARY			=	$(addprefix $(LIB_PATH), $(LIB))
 
-OBJ			=	$(SOURCE:%.c=%.o)
+OBJ				=	$(SOURCE:%.c=%.o)
 
-CC			= 	clang
+CC				= 	clang
 
-CFLAGS		=   -I include/ -Wall -Wextra -Werror
-FSANITIZE	= 	-g3 -O0 -fsanitize=address
+CFLAGS			=   -I $(HFILES_PATH) -Wall -Wextra -Werror
+FSANITIZE		= 	-g3 -O0 -fsanitize=address
 
-RED			=	\e[0;31m
-GREEN		=	\e[0;32m
-WHITE		=	\e[0m
+RED				=	\033[0;31m
+GREEN			=	\033[0;32m
+NO_COLOR		=	\033[0m
 
 all: $(CHECK)
 
-$(CHECK): $(OBJ) $(HEADERS) $(INCLUDE)
+$(CHECK): $(OBJ) $(HEADERS) $(LIBRARY)
 	@printf "[ $(CHECK) ] Compiling...\r"
-	@($(CC) -o $(CHECK) $(SOURCE) $(INCLUDE) $(CFLAGS) $(FSANITIZE))
-	@printf "[ $(CHECK) ] Created $(GREEN)Successfully\n$(WHITE)" $(SUCCESS)
+	@($(CC) -o $(CHECK) $(SOURCE) $(LIBRARY) $(CFLAGS))
+	@printf "[ $(CHECK) ] Created $(GREEN)Successfully\n$(NO_COLOR)" $(SUCCESS)
+
+san: $(OBJ) $(HEADERS) $(LIBRARY)
+	@printf "[ $(CHECK) ] Compiling with fsanitize...\r"
+	@($(CC) -o $(CHECK) $(SOURCE) $(LIBRARY) $(CFLAGS) $(FSANITIZE))
+	@printf "[ $(CHECK) ] Created $(GREEN)Successfully$(NO_COLOR) with fsanitize\n" $(SUCCESS)
 
 lib:
-	@make re bonus -C include/libft
-	@make clean -C include/libft
-
-key:
-	@gcc -o key keycode.c $(CFLAGS)
-	@./key
-	@rm key
+	@make re bonus -C $(LIB_PATH)
+	@make clean -C $(LIB_PATH)
 
 clean:
 	@/bin/rm -f $(OBJ)
-	@printf "Object files ${RED}removed\n${WHITE}"
+	@printf "Object files $(RED)removed\n$(NO_COLOR)"
 
 fclean: clean
 	@/bin/rm -rf $(CHECK)*
 	@/bin/rm -rf .vscode
-	@printf "[ $(CHECK) ] ${RED}removed\n${WHITE}"
+	@printf "[ $(CHECK) ] $(RED)removed\n$(NO_COLOR)"
 
 re: fclean all
 

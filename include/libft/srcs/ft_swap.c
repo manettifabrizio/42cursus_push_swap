@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/08 17:54:57 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/04 12:06:25 by fmanetti         ###   ########.fr       */
+/*   Created: 2020/05/24 17:29:25 by fmanetti          #+#    #+#             */
+/*   Updated: 2021/04/13 15:44:34 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	ft_swap(int *a, int *b)
 {
-	int		tmp;
+	int tmp;
 
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
 }
 
-void	ft_swap_s(char **s1, char **s2)
+void	ft_swap_c(char **s1, char **s2)
 {
 	char	*tmp;
 
@@ -32,7 +32,7 @@ void	ft_swap_s(char **s1, char **s2)
 
 void	ft_swap_f(double *a, double *b)
 {
-	double	tmp;
+	double tmp;
 
 	tmp = *a;
 	*a = *b;

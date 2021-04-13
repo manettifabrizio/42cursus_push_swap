@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 18:15:22 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/05 17:27:19 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/13 15:46:09 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef	struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+int					*ft_sort_array_i(int *a);
+char				**ft_sort_array_c(char **a);
 char				**ft_split(const char *s, char c);
 char				*ft_itoa(int n);
 char				*ft_merge(char **a);
@@ -34,11 +36,11 @@ char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strdup(const char *s1);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strjoin_nl(char *s, char *s1);
-char 				*ft_strjoin_ln(char *s, char *s1);
+char				*ft_strjoin_ln(char *s, char *s1);
 char				*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char				*ft_strncat(char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
-char				*ft_strnstr(const char *haystack, const char *needle, 
+char				*ft_strnstr(const char *haystack, const char *needle,
 						size_t len);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strtrim(char const *s1, char const *set);
@@ -82,10 +84,7 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 void				ft_memdel(void **ap);
-void				ft_print_array_i(int *a, char *name);
-void				ft_print_array_c(char **a, char *name);
-int					*ft_sort_array_i(int *a);
-char				**ft_sort_array_c(char **a);
+void				ft_print_array(char	**a, char *name);
 void				ft_putchar(char c);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(char *s, int fd);
@@ -94,7 +93,7 @@ void				ft_putnbr_fd(int n, int fdi);
 void				ft_putstr(char *str);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_swap(int *a, int *b);
-void				ft_swap_c(char **s1, char **s2);
 void				ft_swap_f(double *a, double *b);
+void				ft_swap_c(char **s1, char **s2);
 
 #endif
