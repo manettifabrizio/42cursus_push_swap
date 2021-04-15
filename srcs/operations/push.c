@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 11:41:26 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/15 18:07:43 by fmanetti         ###   ########.fr       */
+/*   Created: 2021/04/15 17:37:51 by fmanetti          #+#    #+#             */
+/*   Updated: 2021/04/15 17:53:26 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int		read_op_and_execute(t_stack *s)
+int				push_a(int *a, int *b, size_t *size_a, size_t *size_b)
 {
-	char	*op;
-
-	while (get_next_line(STDIN_FILENO, &op) > 0)
-		if (!(execute_op(s, op)))
-			return (0);
+	printf("%s\n", PUSH_A);
+	if (!(*size_b))
+		return (1);
+	stack_scale(a, size_a);
+	a[0] = b[0];
+	stack_del_one(b, size_b);
 	return (1);
 }
 
-int				main(int ac, char **av)
+int				push_b(int *b, int *a, size_t *size_b, size_t *size_a)
 {
-	t_stack	s;
-
-	if (ac < 2)
-		return (0);
-	if (!(create_stacks(ac, av, &s)) || !(read_op_and_execute(&s)))
-		return (error(&s));
-	if (stack_is_sort(s.a, s.size_a) && s.size_b == 0)
-		ft_putstr(OK);
-	else
-		ft_putstr(KO);
-	free(s.a);
-	free(s.b);
-	return (0);
+	printf("%s\n", PUSH_B);
+	if (!(*size_a))
+		return (1);
+	stack_scale(b, size_b);
+	b[0] = a[0];
+	stack_del_one(a, size_a);
+	return (1);
 }

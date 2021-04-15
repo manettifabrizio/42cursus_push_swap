@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/26 17:06:32 by fmanetti          #+#    #+#              #
-#    Updated: 2021/04/13 18:19:58 by fmanetti         ###   ########.fr        #
+#    Updated: 2021/04/15 18:22:19 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,17 @@ CHECK			=	checker
 
 FILE_PUSH_SWAP	=	push_swap.c
 FILE_CHECKER	=	checker.c
-S_PATH			=	./srcs/
+FILES_PATH		=	./srcs/
 
-FILES			=	execute_instructions.c		\
-					instructions.c				\
-					stack_utils.c				\
-					check_errors.c
-FILES_PATH		=	./srcs/utils/
+FILES			=	operations/execute_op.c		\
+					operations/push.c			\
+					operations/rev_rotate.c		\
+					operations/rotate.c			\
+					operations/swap.c			\
+					sort/three_to_five.c		\
+					sort/chunks.c				\
+					utils/stack_utils.c			\
+					utils/check_errors.c
 
 HFILES			=	push_swap.h
 HFILES_PATH		=	./include/
@@ -29,8 +33,8 @@ HFILES_PATH		=	./include/
 LIB				=	libft.a
 LIB_PATH		=	./include/libft/
 
-PUSH_SWAP		=	$(addprefix $(S_PATH), $(FILE_PUSH_SWAP))
-CHECKER			=	$(addprefix $(S_PATH), $(FILE_CHECKER))
+PUSH_SWAP		=	$(addprefix $(FILES_PATH), $(FILE_PUSH_SWAP))
+CHECKER			=	$(addprefix $(FILES_PATH), $(FILE_CHECKER))
 SOURCE			=	$(addprefix $(FILES_PATH), $(FILES))
 HEADERS			=	$(addprefix $(HFILES_PATH), $(HFILES))
 LIBRARY			=	$(addprefix $(LIB_PATH), $(LIB))

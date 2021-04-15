@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 11:41:26 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/15 18:07:43 by fmanetti         ###   ########.fr       */
+/*   Created: 2021/04/15 17:30:01 by fmanetti          #+#    #+#             */
+/*   Updated: 2021/04/15 17:46:45 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int		read_op_and_execute(t_stack *s)
+int				swap_a(int *a, size_t size)
 {
-	char	*op;
-
-	while (get_next_line(STDIN_FILENO, &op) > 0)
-		if (!(execute_op(s, op)))
-			return (0);
+	printf("%s\n", SWAP_A);
+	if (size > 1)
+		ft_swap(&(a[0]), &(a[1]));
 	return (1);
 }
 
-int				main(int ac, char **av)
+int				swap_b(int *a, size_t size)
 {
-	t_stack	s;
+	printf("%s\n", SWAP_B);
+	if (size > 1)
+		ft_swap(&(a[0]), &(a[1]));
+	return (1);
+}
 
-	if (ac < 2)
-		return (0);
-	if (!(create_stacks(ac, av, &s)) || !(read_op_and_execute(&s)))
-		return (error(&s));
-	if (stack_is_sort(s.a, s.size_a) && s.size_b == 0)
-		ft_putstr(OK);
-	else
-		ft_putstr(KO);
-	free(s.a);
-	free(s.b);
-	return (0);
+int				swap_ab(int *a, int *b, size_t size_a, size_t size_b)
+{
+	printf("%s\n", SWAP_AB);
+	if (size_a > 1)
+		ft_swap(&(a[0]), &(a[1]));
+	if (size_b > 1)
+		ft_swap(&(b[0]), &(b[1]));
+	return (1);
 }

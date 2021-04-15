@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 18:15:22 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/13 18:21:45 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/15 11:23:25 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef	struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-int					*ft_sort_array_i(int *a);
+int					*ft_sort_array_i(int *a, size_t size);
 char				**ft_sort_array_c(char **a);
 char				**ft_split(const char *s, char c);
 char				*ft_itoa(int n);
@@ -84,8 +84,8 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 void				ft_memdel(void **ap);
-void				ft_print_array_i(int **a);
-void				ft_print_array_c(char **a, char *name);
+void				ft_print_array_i(int *a, size_t size);
+void				ft_print_array_c(char	**a, char *name);
 void				ft_putchar(char c);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(char *s, int fd);
