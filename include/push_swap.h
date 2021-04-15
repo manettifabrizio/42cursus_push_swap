@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:43:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/15 18:14:09 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/16 01:24:04 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ typedef struct	s_stack
 int				create_stacks(int ac, char **av, t_stack *s);
 
 // SORTING
-int				sort_3_to_5(t_stack *s);
-int				sort_with_chunks();
+int				three_to_five(t_stack *s);
+int				chunks();
 
 // OPERATIONS
-int				execute_op(t_stack *s, char *op);
+int				execute(t_stack *s, char *op);
 int				swap_a(int *a, size_t size);
 int				swap_b(int *a, size_t size);
 int				swap_ab(int *a, int *b, size_t size_a, size_t size_b);
@@ -61,9 +61,12 @@ int				rev_rotate_b(int *a, size_t size);
 int				rev_rotate_ab(int *a, int *b, size_t size_a, size_t size_b);
 
 // UTILS
+void			print_stacks(t_stack s);
 void			stack_scale(int *stack, size_t *size);
 void			stack_del_one(int *stack, size_t *size);
 int				stack_is_sort(int *a, size_t size);
+int				find_min(int *a, size_t size);
+int				find_max(int *a, size_t size);
 
 // ERRORS
 int				error(t_stack *s);

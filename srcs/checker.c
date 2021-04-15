@@ -6,18 +6,19 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:41:26 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/15 18:07:43 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/16 01:26:43 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int		read_op_and_execute(t_stack *s)
+static int		read_and_execute(t_stack *s)
 {
 	char	*op;
 
+	print_stacks(*s);
 	while (get_next_line(STDIN_FILENO, &op) > 0)
-		if (!(execute_op(s, op)))
+		if (!(execute(s, op)))
 			return (0);
 	return (1);
 }
@@ -28,7 +29,7 @@ int				main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-	if (!(create_stacks(ac, av, &s)) || !(read_op_and_execute(&s)))
+	if (!(create_stacks(ac, av, &s)) || !(read_and_execute(&s)))
 		return (error(&s));
 	if (stack_is_sort(s.a, s.size_a) && s.size_b == 0)
 		ft_putstr(OK);

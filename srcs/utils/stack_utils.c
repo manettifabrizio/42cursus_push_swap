@@ -6,44 +6,34 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:57:46 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/15 18:07:29 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/16 00:40:37 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		*str_to_arr_i(char **av, int ac)
+void			print_stacks(t_stack s)
 {
 	int		i;
-	int		*a;
-	int		size;
 
-	size = ac - 1;
-	if (!(a = malloc(size * sizeof(int))))
-		return (NULL);
 	i = -1;
-	while (av[++i + 1])
+	ft_putstr("a	b\n");
+	ft_putstr("-	-\n");
+	while (++i < (int)s.size_max)
 	{
-		if (!(check_stack(av[i + 1])) || !(check_dup(av)))
-			return (NULL);
-		a[i] = ft_atoi(av[i + 1]);
+		if (i < (int)s.size_a)
+			ft_putnbr(s.a[i]);
+		else
+			ft_putchar(' ');
+		ft_putchar('\t');
+		if (i < (int)s.size_b)
+			ft_putnbr(s.b[i]);
+		ft_putchar('\n');
 	}
-	return (a);
+	ft_putstr("-	-\n\n");
 }
 
-int				create_stacks(int ac, char **av, t_stack *s)
-{
-	if (!(s->a = str_to_arr_i(av, ac)))
-		return (0);
-	s->size_a = ac - 1;
-	s->size_b = 0;
-	s->size_max = s->size_a;
-	if (!(s->b = malloc((s->size_max + 1) * sizeof(int))))
-		return (0);
-	return (1);
-}
-
-void	stack_scale(int *a, size_t *size)
+void			stack_scale(int *a, size_t *size)
 {
 	int		i;
 
@@ -56,7 +46,7 @@ void	stack_scale(int *a, size_t *size)
 	(*size)++;
 }
 
-void	stack_del_one(int *a, size_t *size)
+void			stack_del_one(int *a, size_t *size)
 {
 	int		i;
 
@@ -69,7 +59,7 @@ void	stack_del_one(int *a, size_t *size)
 	(*size)--;
 }
 
-int		stack_is_sort(int *a, size_t size)
+int				stack_is_sort(int *a, size_t size)
 {
 	int		i;
 

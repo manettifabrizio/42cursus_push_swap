@@ -1,18 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chunks.c                                           :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 18:23:49 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/15 20:57:17 by fmanetti         ###   ########.fr       */
+/*   Created: 2021/04/16 01:04:51 by fmanetti          #+#    #+#             */
+/*   Updated: 2021/04/16 01:27:54 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int				chunks()
+int				find_min(int *a, size_t size)
 {
-	return (1);
+	int		i;
+	int		min;
+
+	i = -1;
+	min = a[0];
+	while (++i < (int)size)
+		if (a[i] < min)
+			min = a[i];
+	return (min);
+}
+
+int				find_max(int *a, size_t size)
+{
+	int		i;
+	int		max;
+
+	i = -1;
+	max = a[0];
+	while (++i < (int)size)
+		if (a[i] > max)
+			max = a[i];
+	return (max);
 }

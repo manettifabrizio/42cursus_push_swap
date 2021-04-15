@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:05:38 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/05 17:48:52 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/15 20:59:42 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		check_dup(char **a)
 	return (1);
 }
 
-int		check_inst(char *s)
+int		check_op(char *s)
 {
 	int		i;
 

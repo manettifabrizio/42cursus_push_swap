@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 17:09:17 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/15 17:16:16 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/15 21:00:37 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int		choose_method(t_stack s)
 			return (1);
 		}
 		else if (s.size_max > 2 && s.size_max < 6)
-			return (sort_3_to_5(&s));
+			return (three_to_five(&s));
 		else if (s.size_max > 5 && s.size_max < 500)
-			return (sort_with_chunks());
+			return (chunks());
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 17:49:32 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/15 17:53:13 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/15 21:12:19 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int				rev_rotate_a(int *a, size_t size)
 	int		i;
 	int		tmp;
 
-	printf("%s\n", ROTATE_A);
+	printf("%s\n", REV_ROTATE_A);
 	if (size > 1)
 	{
 		tmp = a[size - 1];
@@ -34,7 +34,7 @@ int				rev_rotate_b(int *a, size_t size)
 	int		i;
 	int		tmp;
 
-	printf("%s\n", ROTATE_B);
+	printf("%s\n", REV_ROTATE_B);
 	if (size > 1)
 	{
 		tmp = a[size - 1];
@@ -51,7 +51,7 @@ int				rev_rotate_ab(int *a, int *b, size_t size_a, size_t size_b)
 	int		i;
 	int		tmp;
 
-	printf("%s\n", ROTATE_AB);
+	printf("%s\n", REV_ROTATE_AB);
 	if (size_a > 1)
 	{
 		tmp = a[size_a - 1];
