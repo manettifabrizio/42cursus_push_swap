@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 17:09:17 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/15 21:00:37 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/16 19:18:47 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-	if (!(create_stacks(ac, av, &s)) || !(choose_method(s)))
+	if (!(create_stacks(av, &s)) || !(choose_method(s)))
 		return (error(&s));
 	free(s.a);
 	free(s.b);

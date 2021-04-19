@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:41:26 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/16 01:26:43 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/16 19:40:07 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ int				main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-	if (!(create_stacks(ac, av, &s)) || !(read_and_execute(&s)))
+	s.a = NULL;
+	s.b = NULL;
+	if (!(create_stacks(av, &s)) || !(read_and_execute(&s)))
 		return (error(&s));
 	if (stack_is_sort(s.a, s.size_a) && s.size_b == 0)
 		ft_putstr(OK);

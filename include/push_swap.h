@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:43:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/16 01:24:04 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/19 10:01:51 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct	s_stack
 	size_t		size_max;
 }				t_stack;
 
-int				create_stacks(int ac, char **av, t_stack *s);
+int				create_stacks(char **av, t_stack *s);
 
 // SORTING
 int				three_to_five(t_stack *s);
@@ -71,5 +71,5 @@ int				find_max(int *a, size_t size);
 // ERRORS
 int				error(t_stack *s);
 int				check_stack(char *s);
-int				check_dup(char **a);
+int				check_dup(int *a, size_t size);
 int				check_op(char *s);

@@ -6,36 +6,60 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:38:42 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/15 21:58:28 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/19 10:30:11 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		*str_to_arr_i(char **av, int ac)
+static int		*create_arr_i(char **av, size_t size)
 {
 	int		i;
+	int		x;
 	int		*a;
-	int		size;
+	char	**tmp;
 
-	size = ac - 1;
-	if (!(a = malloc(size * sizeof(int))))
+	i = 0;
+	x = -1;
+	if (!(a = malloc((size) * sizeof(int))))
 		return (NULL);
-	i = -1;
-	while (av[++i + 1])
+	while (av[++i])
 	{
-		if (!(check_stack(av[i + 1])) || !(check_dup(av)))
+		if (!(check_stack(av[i])))
 			return (NULL);
-		a[i] = ft_atoi(av[i + 1]);
+		x = -1;
+		tmp = ft_split(av[i], ' ');
+		while (tmp[++x])
+			a[++x] = ft_atoi(tmp[x]);
+		ft_free_array(tmp);
 	}
 	return (a);
 }
 
-int				create_stacks(int ac, char **av, t_stack *s)
+static int		*str_to_arr_i(char **av, size_t *size)
 {
-	if (!(s->a = str_to_arr_i(av, ac)))
+	int		i;
+	int		*a;
+	char	**tmp;
+
+	i = 0;
+	(*size) = 0;
+	while (av[++i])
+	{
+		tmp = ft_split(av[i], ' ');
+		(*size) += ft_arrlen(tmp);
+		ft_free_array(tmp);
+	}
+	a = create_arr_i(av, size);
+	if (!(check_dup(a, *size)))
+		return (NULL);
+	return (a);
+}
+
+int				create_stacks(char **av, t_stack *s)
+{
+	if (!(s->a = str_to_arr_i(av, &(s->size_a))))
 		return (0);
-	s->size_a = ac - 1;
 	s->size_b = 0;
 	s->size_max = s->size_a;
 	if (!(s->b = malloc((s->size_max + 1) * sizeof(int))))
