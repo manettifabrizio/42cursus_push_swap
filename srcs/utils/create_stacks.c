@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:38:42 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/19 10:30:11 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/19 10:43:04 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ static int		*create_arr_i(char **av, size_t size)
 {
 	int		i;
 	int		x;
+	int		y;
 	int		*a;
 	char	**tmp;
 
 	i = 0;
-	x = -1;
+	y = -1;
 	if (!(a = malloc((size) * sizeof(int))))
 		return (NULL);
 	while (av[++i])
@@ -30,7 +31,7 @@ static int		*create_arr_i(char **av, size_t size)
 		x = -1;
 		tmp = ft_split(av[i], ' ');
 		while (tmp[++x])
-			a[++x] = ft_atoi(tmp[x]);
+			a[++y] = ft_atoi(tmp[x]);
 		ft_free_array(tmp);
 	}
 	return (a);
@@ -50,7 +51,7 @@ static int		*str_to_arr_i(char **av, size_t *size)
 		(*size) += ft_arrlen(tmp);
 		ft_free_array(tmp);
 	}
-	a = create_arr_i(av, size);
+	a = create_arr_i(av, *size);
 	if (!(check_dup(a, *size)))
 		return (NULL);
 	return (a);
