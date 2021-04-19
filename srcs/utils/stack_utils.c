@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:57:46 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/16 00:40:37 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/19 16:48:52 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ void			print_stacks(t_stack s)
 	int		i;
 
 	i = -1;
-	ft_putstr("a	b\n");
-	ft_putstr("-	-\n");
+	printf("a	b\n");
+	printf("-	-\n");
 	while (++i < (int)s.size_max)
 	{
 		if (i < (int)s.size_a)
-			ft_putnbr(s.a[i]);
+			printf("%d", s.a[i]);
 		else
-			ft_putchar(' ');
-		ft_putchar('\t');
+			printf(" ");
+		printf("\t");
 		if (i < (int)s.size_b)
-			ft_putnbr(s.b[i]);
-		ft_putchar('\n');
+			printf("%d", s.b[i]);
+		printf("\n");
 	}
-	ft_putstr("-	-\n\n");
+	printf("-	-\n\n");
 }
 
 void			stack_scale(int *a, size_t *size)

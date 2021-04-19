@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:43:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/19 10:01:51 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/19 10:50:17 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define	REV_ROTATE_AB	"rrr"
 
 # define	ERROR			"\e[0;31m\e[1mError\n\e[0m"
-# define	OK				"\e[0;32m\e[1mOK\n\e[0m"
+# define	OK				"\e[0;32m\e[1mOK\e[0m"
 # define	KO				"\e[0;31m\e[1mKO\n\e[0m"
 
 typedef struct	s_stack
@@ -38,6 +38,7 @@ typedef struct	s_stack
 	int			*b;
 	size_t		size_b;
 	size_t		size_max;
+	size_t		ops_nbr;
 }				t_stack;
 
 int				create_stacks(char **av, t_stack *s);
