@@ -1,4 +1,35 @@
 #!/bin/bash
+
+set -e
+ARG="2 1" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="1 3 2" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="2 1 3" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="2 3 1" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="3 1 2" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="3 2 1" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="1 2 4 3" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="1 3 2 4" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="1 3 4 2" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="1 4 2 3" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="1 4 3 2" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="2 1 3 4" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="2 1 4 3" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="2 3 1 4" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="2 3 4 1" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="2 4 1 3" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="2 4 3 1" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="3 1 2 4" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="3 1 4 2" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="3 2 1 4" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="3 2 4 1" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="3 4 1 2" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="3 4 2 1" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="4 1 2 3" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="4 1 3 2" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="4 2 1 3" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="4 2 3 1" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="4 3 1 2" ; echo -n $ARG && ./push_swap $ARG | wc
+ARG="4 3 2 1" ; echo -n $ARG && ./push_swap $ARG | wc
 ARG="1 2 3 5 4" ; echo -n $ARG && ./push_swap $ARG | wc
 ARG="1 2 4 3 5" ; echo -n $ARG && ./push_swap $ARG | wc
 ARG="1 2 5 3 4" ; echo -n $ARG && ./push_swap $ARG | wc

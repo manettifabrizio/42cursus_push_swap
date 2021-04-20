@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:43:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/19 10:50:17 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/20 11:46:40 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void			stack_del_one(int *stack, size_t *size);
 int				stack_is_sort(int *a, size_t size);
 int				find_min(int *a, size_t size);
 int				find_max(int *a, size_t size);
+int				min_pos(int *a, int size);
+int				is_already_sort(int *a, size_t size);
 
 // ERRORS
 int				error(t_stack *s);

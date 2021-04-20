@@ -6,13 +6,13 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 18:23:23 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/19 18:20:01 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/20 12:24:27 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int				is_one_ops(int *a)
+static int		is_one_ops(int *a)
 {
 	if (a[0] < a[1] && a[1] > a[2] && a[2] < a[0])
 		return (rev_rotate_a(a, 3));
@@ -21,7 +21,7 @@ static int				is_one_ops(int *a)
 	return (0);
 }
 
-static int				three(int *a)
+static int		three(int *a)
 {
 	if (stack_is_sort(a, 3))
 		return (1);
@@ -35,74 +35,20 @@ static int				three(int *a)
 	return (1);
 }
 
-int				is_already_sort(int *a, int size)
+static int		four_or_five(t_stack *s)
 {
-	int		x, y;
-	int		min;
-	int		*tmp;
-
-	tmp = malloc (size * sizeof(int));
-	min = find_min(a, size);
-	x = 0;
-	while (a[x] != min)
-		x++;
-	if (x == size - 1)
-		x = 0;
-	else
-		x++;
-	y = 1;
-	tmp[0] = min;
-	while (a[x] != min)
-	{
-		tmp[y++] = a[x];
-		if (x == size - 1)
-			x = 0;
-		else
-			x++;
-	}
-	if (stack_is_sort(tmp, size))
-	{
-		free(tmp);	
-		return (1);
-	}
-	free(tmp);
-	return (0);
-}
-
-static int				min_pos(int *a, int size)
-{
-	int		x;
-	int		min;
-
-	x = 0;
-	min = find_min(a, size);
-	while (a[x] != min && x < size)
-		x++;
-	return (x);
-}
-
-static int				four_or_five(t_stack *s)
-{
-	int		min;
-	int		max;
-
-	min = find_min(s->a, s->size_a);
-	max = find_max(s->a, s->size_a);
 	while (s->size_a > 3 && !is_already_sort(s->a, s->size_a))
 		push_b(s->b, s->a, &(s->size_b), &(s->size_a));
 	if (s->size_a == 3)
 		three(s->a);
 	while (s->size_b > 0)
 	{
-		if (s->b[0] == max && s->a[0] == find_min(s->a, s->size_a))
-			push_a(s->a, s->b, &(s->size_a), &(s->size_b));
-		else if (s->b[0] < s->a[0] && s->b[0] < s->a[s->size_a - 1]
-			&& s->a[0] == find_min(s->a, s->size_a))
-			push_a(s->a, s->b, &(s->size_a), &(s->size_b));
-		else if (s->b[0] < s->a[0] && s->b[0] > s->a[s->size_a - 1])
-			push_a(s->a, s->b, &(s->size_a), &(s->size_b));
-		else if (s->b[0] > s->a[0] && s->b[0] > s->a[s->size_a - 1]
-			&& s->a[0] == find_min(s->a, s->size_a))
+		if ((s->b[0] == find_max(s->a, s->size_a) &&
+			s->a[0] == find_min(s->a, s->size_a)) ||
+			(s->b[0] < s->a[0] && s->b[0] > s->a[s->size_a - 1]) ||
+			(((s->b[0] < s->a[0] && s->b[0] < s->a[s->size_a - 1]) ||
+			(s->b[0] > s->a[0] && s->b[0] > s->a[s->size_a - 1])) &&
+			s->a[0] == find_min(s->a, s->size_a)))
 			push_a(s->a, s->b, &(s->size_a), &(s->size_b));
 		else if (s->b[0] > s->a[0] && s->b[0] < s->a[1])
 			rotate_a(s->a, s->size_a);
@@ -123,5 +69,5 @@ int				three_to_five(t_stack *s)
 		return (three(s->a));
 	if (s->size_max == 4 || s->size_max == 5)
 		return (four_or_five(s));
-	return (0);	
+	return (0);
 }
