@@ -6,18 +6,18 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:05:38 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/19 10:10:10 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/20 17:38:34 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int				error(t_stack *s)
+int				error(t_main *m)
 {
 	ft_putstr_fd(ERROR, STDERR_FILENO);
-	free(s->a);
-	if (s->b)
-		free(s->b);
+	free(m->a->arr);
+	if (m->b->arr)
+		free(m->b->arr);
 	return (0);
 }
 

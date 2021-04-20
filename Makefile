@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/26 17:06:32 by fmanetti          #+#    #+#              #
-#    Updated: 2021/04/16 01:15:19 by fmanetti         ###   ########.fr        #
+#    Updated: 2021/04/20 17:43:25 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ NO_COLOR		=	\033[0m
 
 all: $(NAME)
 
+# Do Makes separated make check make check san make $(NAME) make $(NAME) san 
 $(NAME): $(OBJ) $(HEADERS) $(LIBRARY)
 	@printf "[ $(NAME) ] Compiling...\r"
 	@($(CC) -o $(NAME) $(PUSH_SWAP) $(SOURCE) $(LIBRARY) $(CFLAGS))

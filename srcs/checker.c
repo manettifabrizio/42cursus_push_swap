@@ -6,21 +6,22 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:41:26 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/19 17:57:40 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/20 17:40:38 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int		read_and_execute(t_stack *s)
+static int		read_and_execute(t_main *m)
 {
 	char	*op;
 
-	// print_stacks(*s);
+	if (m->opt->v)
+		print_stacks(*m, *(m->a), *(m->b));
 	while (get_next_line(STDIN_FILENO, &op) > 0)
 	{
-		(s->ops_nbr)++;
-		if (!(execute(s, op)))
+		(m->ops_nbr)++;
+		if (!(execute(m, op)))
 			return (0);
 	}
 	return (1);
@@ -28,20 +29,20 @@ static int		read_and_execute(t_stack *s)
 
 int				main(int ac, char **av)
 {
-	t_stack	s;
+	t_main	m;
 
 	if (ac < 2)
 		return (0);
-	s.a = NULL;
-	s.b = NULL;
-	s.ops_nbr = 0;
-	if (!(create_stacks(av, &s)) || !(read_and_execute(&s)))
-		return (error(&s));
-	if (stack_is_sort(s.a, s.size_a) && s.size_b == 0)
-		printf("%s | Total operations: %zu\n", OK, s.ops_nbr);
+	m.a->arr = NULL;
+	m.b->arr = NULL;
+	m.ops_nbr = 0;
+	if (!(create_stacks(av, &m)) || !(read_and_execute(&m)))
+		return (error(&m));
+	if (stack_is_sort(m.a) && m.b->size == 0)
+		printf("%s\n", OK);
 	else
 		ft_putstr(KO);
-	free(s.a);
-	free(s.b);
+	free(m.a->arr);
+	free(m.b->arr);
 	return (0);
 }

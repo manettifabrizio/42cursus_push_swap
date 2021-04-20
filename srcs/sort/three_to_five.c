@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 18:23:23 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/20 12:24:27 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/20 15:39:11 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,22 @@ static int		three(int *a)
 
 static int		four_or_five(t_stack *s)
 {
-	while (s->size_a > 3 && !is_already_sort(s->a, s->size_a))
+	int		min;
+	int		max;
+
+	min = find_min(s->a, s->size_a);
+	max = find_max(s->a, s->size_a);
+	while (s->size_a > 3 && !(is_already_sort(s->a, s->size_a)))
 		push_b(s->b, s->a, &(s->size_b), &(s->size_a));
 	if (s->size_a == 3)
 		three(s->a);
 	while (s->size_b > 0)
 	{
-		if ((s->b[0] == find_max(s->a, s->size_a) &&
-			s->a[0] == find_min(s->a, s->size_a)) ||
-			(s->b[0] < s->a[0] && s->b[0] > s->a[s->size_a - 1]) ||
-			(((s->b[0] < s->a[0] && s->b[0] < s->a[s->size_a - 1]) ||
-			(s->b[0] > s->a[0] && s->b[0] > s->a[s->size_a - 1])) &&
-			s->a[0] == find_min(s->a, s->size_a)))
+		if ((s->b[0] == max && s->a[0] == find_min(s->a, s->size_a)) ||
+			(s->b[0] == min && s->a[0] == find_min(s->a, s->size_a)) ||
+			(s->b[0] < find_min(s->a, s->size_a) && s->b[0] != min) ||
+			(s->b[0] > find_max(s->a, s->size_a) && s->b[0] != max) ||
+			(s->b[0] < s->a[0] && s->b[0] > s->a[s->size_a - 1]))
 			push_a(s->a, s->b, &(s->size_a), &(s->size_b));
 		else if (s->b[0] > s->a[0] && s->b[0] < s->a[1])
 			rotate_a(s->a, s->size_a);

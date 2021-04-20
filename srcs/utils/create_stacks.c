@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:38:42 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/19 10:43:04 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/20 17:18:03 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,34 @@ static int		*str_to_arr_i(char **av, size_t *size)
 	return (a);
 }
 
-int				create_stacks(char **av, t_stack *s)
+static int		check_options(char *s, t_opt *opt)
 {
-	if (!(s->a = str_to_arr_i(av, &(s->size_a))))
+	int		i;
+
+	i = 0;
+	opt->v = 0;
+	opt->c = 0;
+	while (s[++i])
+	{
+		if (s[i] == 'v')
+			opt->v = 1;
+		else if (s[i] == 'c')
+			opt->c = 1;
+		else
+			return (0);
+	}
+}
+
+int				create_stacks(char **av, t_main *m)
+{
+	if (av[1][0] == '-')
+		if (!check_options(av[1][0], m->opt))
+			return (0);
+	if (!(m->a->arr = str_to_arr_i(av, &(m->a->size))))
 		return (0);
-	s->size_b = 0;
-	s->size_max = s->size_a;
-	if (!(s->b = malloc((s->size_max + 1) * sizeof(int))))
+	m->b->size = 0;
+	m->size_max = m->a->size;
+	if (!(m->b->arr = malloc((m->size_max + 1) * sizeof(int))))
 		return (0);
 	return (1);
 }
