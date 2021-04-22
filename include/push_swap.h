@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:43:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/20 17:39:35 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/21 23:40:32 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,14 @@ int				rev_rotate(t_stack *s, int type);
 void			print_stacks(t_main m, t_stack a, t_stack b);
 void			stack_scale(t_stack *s);
 void			stack_del_one(t_stack *s);
-int				stack_is_sort(t_stack *s);
-int				find_min(int *a, size_t size);
-int				find_max(int *a, size_t size);
-int				min_pos(int *a, int size);
-int				is_already_sort(int *a, size_t size);
+int				stack_is_sort(t_stack s);
+int				find_min(t_stack s);
+int				find_max(t_stack s);
+int				min_pos(t_stack s);
+int				is_already_sort(t_stack s);
 
 // ERRORS
 int				error(t_main *s);
 int				check_stack(char *s);
-int				check_dup(int *a, size_t size);
+int				check_dup(t_stack s);
 int				check_op(char *s);

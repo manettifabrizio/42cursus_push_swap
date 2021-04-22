@@ -6,46 +6,46 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 01:04:51 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/20 12:27:04 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/21 23:37:22 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int				find_min(int *a, size_t size)
+int				find_min(t_stack s)
 {
 	int		i;
 	int		min;
 
 	i = -1;
-	min = a[0];
-	while (++i < (int)size)
-		if (a[i] < min)
-			min = a[i];
+	min = s.arr[0];
+	while (++i < (int)s.size)
+		if (s.arr[i] < min)
+			min = s.arr[i];
 	return (min);
 }
 
-int				find_max(int *a, size_t size)
+int				find_max(t_stack s)
 {
 	int		i;
 	int		max;
 
 	i = -1;
-	max = a[0];
-	while (++i < (int)size)
-		if (a[i] > max)
-			max = a[i];
+	max = s.arr[0];
+	while (++i < (int)s.size)
+		if (s.arr[i] > max)
+			max = s.arr[i];
 	return (max);
 }
 
-int				min_pos(int *a, int size)
+int				min_pos(t_stack s)
 {
 	int		x;
 	int		min;
 
 	x = 0;
-	min = find_min(a, size);
-	while (a[x] != min && x < size)
+	min = find_min(s);
+	while (s.arr[x] != min && x < (int)s.size)
 		x++;
 	return (x);
 }
@@ -58,28 +58,29 @@ static int		choose_x(int x, size_t size)
 		return (x + 1);
 }
 
-int				is_already_sort(int *a, size_t size)
+int				is_already_sort(t_stack s)
 {
-	int		x;
-	int		y;
-	int		min;
-	int		*tmp;
+	int			x;
+	int			y;
+	int			min;
+	t_stack		tmp;
 
-	if (!(tmp = malloc(size * sizeof(int))))
+	tmp.size = s.size;
+	if (!(tmp.arr = malloc(s.size * sizeof(int))))
 		return (0);
-	min = find_min(a, size);
+	min = find_min(s);
 	x = 0;
-	while (a[x] != min)
+	while (s.arr[x] != min)
 		x++;
-	x = choose_x(x, size);
+	x = choose_x(x, s.size);
 	y = 1;
-	tmp[0] = min;
-	while (a[x] != min)
+	tmp.arr[0] = min;
+	while (s.arr[x] != min)
 	{
-		tmp[y++] = a[x];
-		x = choose_x(x, size);
+		tmp.arr[y++] = s.arr[x];
+		x = choose_x(x, s.size);
 	}
-	x = stack_is_sort(tmp, size);
-	free(tmp);
+	x = stack_is_sort(tmp);
+	free(tmp.arr);
 	return (x);
 }

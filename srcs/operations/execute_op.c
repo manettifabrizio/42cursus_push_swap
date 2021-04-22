@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 11:27:34 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/20 17:36:13 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/22 00:05:18 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ int				execute(t_main *m, char *op)
 		print_stacks(*m, *(m->a), *(m->b));
 	}
 	free(op);
-	// printf("size_a = %zu size_b = %zu\n", s->size_a, s->size_b);
+	// printf("size_a = %zu size_b = %zu size_max = %zu\n", m->a->size, m->b->size, m->size_max);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:57:46 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/20 17:43:44 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/21 23:55:29 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ void			stack_del_one(t_stack *s)
 	(s->size)--;
 }
 
-int				stack_is_sort(t_stack *s)
+int				stack_is_sort(t_stack s)
 {
 	int		i;
 
 	i = 0;
-	while ((i + 1) < (int)s->size)
+	while ((i + 1) < (int)s.size)
 	{
-		if (s->arr[i] > s->arr[i + 1])
+		if (s.arr[i] > s.arr[i + 1])
 			return (0);
 		i++;
 	}

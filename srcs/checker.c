@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:41:26 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/20 17:40:38 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/22 00:42:44 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,13 @@ int				main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-	m.a->arr = NULL;
-	m.b->arr = NULL;
 	m.ops_nbr = 0;
 	if (!(create_stacks(av, &m)) || !(read_and_execute(&m)))
 		return (error(&m));
-	if (stack_is_sort(m.a) && m.b->size == 0)
-		printf("%s\n", OK);
+	if (stack_is_sort(*(m.a)) && m.b->size == 0)
+		printf("OK\n");
 	else
-		ft_putstr(KO);
+		printf("KO\n");
 	free(m.a->arr);
 	free(m.b->arr);
 	return (0);

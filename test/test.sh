@@ -9,7 +9,6 @@ while IFS= read -r ARG
 	do
 		echo -n $ARG
 		TMP=`./push_swap $ARG | ./checker $ARG`
-		echo $TMP
   		if [ "$TMP" != "OK" ];
 		  	then
 			((ERR++))
@@ -18,14 +17,15 @@ while IFS= read -r ARG
 			echo -e "  [ \033[0;32m\033[1mOK\033[0m ]"
 		fi
 		LNS=`./push_swap $ARG | wc -l`
-  		if [ $LNS \> $RES ]; then
-			RES=LNS
+  		LNS=`echo $LNS | xargs`
+		if (( $(echo "$LNS > $RES" | bc -l) )); then
+			RES=$LNS
 		fi
-done < "tests"
+done < "test/tests"
 
 if [ $ERR -eq 0 ];
 	then
-	echo -e "\033[0;32mSuccess max ops:$RES"
+	echo -e "\033[0;32mSuccess max ops: $RES"
 else
 	echo -e "\033[0;31mFail $ERR / 148"
 fi

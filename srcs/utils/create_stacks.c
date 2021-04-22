@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:38:42 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/20 17:18:03 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/22 00:32:00 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int		*create_arr_i(char **av, size_t size)
 	int		*a;
 	char	**tmp;
 
-	i = 0;
+	i = (av[1][0] == '-') ? 1 : 0;
 	y = -1;
 	if (!(a = malloc((size) * sizeof(int))))
 		return (NULL);
@@ -37,24 +37,27 @@ static int		*create_arr_i(char **av, size_t size)
 	return (a);
 }
 
-static int		*str_to_arr_i(char **av, size_t *size)
+static t_stack	*str_to_arr_i(char **av)
 {
-	int		i;
-	int		*a;
-	char	**tmp;
+	int			i;
+	t_stack		*s;
+	char		**tmp;
 
-	i = 0;
-	(*size) = 0;
+	i = (av[1][0] == '-') ? 1 : 0;
+	if (!(s = malloc(sizeof(t_stack))))
+		return (NULL);
+	s->size = 0;
 	while (av[++i])
 	{
 		tmp = ft_split(av[i], ' ');
-		(*size) += ft_arrlen(tmp);
+		s->size += ft_arrlen(tmp);
 		ft_free_array(tmp);
 	}
-	a = create_arr_i(av, *size);
-	if (!(check_dup(a, *size)))
+	if (!(s->arr = create_arr_i(av, s->size)))
 		return (NULL);
-	return (a);
+	if (!(check_dup(*s)))
+		return (NULL);
+	return (s);
 }
 
 static int		check_options(char *s, t_opt *opt)
@@ -62,8 +65,6 @@ static int		check_options(char *s, t_opt *opt)
 	int		i;
 
 	i = 0;
-	opt->v = 0;
-	opt->c = 0;
 	while (s[++i])
 	{
 		if (s[i] == 'v')
@@ -73,14 +74,26 @@ static int		check_options(char *s, t_opt *opt)
 		else
 			return (0);
 	}
+	if (i == 1)
+		return (0);
+	else
+		return (1);
 }
 
 int				create_stacks(char **av, t_main *m)
 {
+	m->a = NULL;
+	m->b = NULL;
+	if (!(m->opt = malloc(sizeof(t_opt))))
+		return (0);
+	m->opt->v = 0;
+	m->opt->c = 0;
 	if (av[1][0] == '-')
-		if (!check_options(av[1][0], m->opt))
+		if (!(check_options(av[1], m->opt)))
 			return (0);
-	if (!(m->a->arr = str_to_arr_i(av, &(m->a->size))))
+	if (!(m->a = str_to_arr_i(av)))
+		return (0);
+	if (!(m->b = malloc(sizeof(t_stack))))
 		return (0);
 	m->b->size = 0;
 	m->size_max = m->a->size;
