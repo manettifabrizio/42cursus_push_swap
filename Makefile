@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/26 17:06:32 by fmanetti          #+#    #+#              #
-#    Updated: 2021/04/22 10:42:23 by fmanetti         ###   ########.fr        #
+#    Updated: 2021/04/22 14:01:25 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,10 @@ FILE_PUSH_SWAP	=	push_swap.c
 FILE_CHECKER	=	checker.c
 FILES_PATH		=	./srcs/
 
-FILES			=	operations/execute_op.c		\
+FILES			=	operations/execute.c		\
 					operations/operations.c		\
 					sort/three_to_five.c		\
-					sort/chunks.c				\
+					sort/six_to_fifty.c			\
 					sort/sort_utils.c			\
 					utils/create_stacks.c		\
 					utils/stack_utils.c			\

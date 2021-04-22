@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:43:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/21 23:40:32 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/22 13:56:28 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,18 @@ typedef struct	s_main
 	t_opt		*opt;
 }				t_main;
 
-int				create_stacks(char **av, t_main *s);
+int				create_stacks(char **av, t_main *m);
 
 // SORTING
-int				three_to_five(t_main *s);
-int				chunks();
+int				three_to_five(t_main *m);
+int				six_to_fifty(t_main *m, t_stack *a, t_stack *b, t_list *h);
 
 // OPERATIONS
 int				execute(t_main *s, char *op);
-int				swap(t_stack *s, int type);
-int				push(t_stack *s1, t_stack *s2, int type);
-int				rotate(t_stack *s, int type);
-int				rev_rotate(t_stack *s, int type);
+char			*swap(t_stack *s, int type);
+char			*push(t_stack *s1, t_stack *s2, int type);
+char			*rotate(t_stack *s, int type);
+char			*rev_rotate(t_stack *s, int type);
 
 // UTILS
 void			print_stacks(t_main m, t_stack a, t_stack b);
