@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/26 17:06:32 by fmanetti          #+#    #+#              #
-#    Updated: 2021/04/22 14:01:25 by fmanetti         ###   ########.fr        #
+#    Updated: 2021/04/26 16:20:26 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,9 @@ FILES_PATH		=	./srcs/
 FILES			=	operations/execute.c		\
 					operations/operations.c		\
 					sort/three_to_five.c		\
-					sort/six_to_fifty.c			\
-					sort/sort_utils.c			\
+					sort/chunks.c				\
+					sort/create_chunks.c		\
+					utils/sort_utils.c			\
 					utils/create_stacks.c		\
 					utils/stack_utils.c			\
 					utils/check_errors.c

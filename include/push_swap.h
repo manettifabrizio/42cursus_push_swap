@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:43:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/22 13:56:28 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/26 16:55:20 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ int				create_stacks(char **av, t_main *m);
 
 // SORTING
 int				three_to_five(t_main *m);
-int				six_to_fifty(t_main *m, t_stack *a, t_stack *b, t_list *h);
+int				chunks(t_main *m, t_stack *a, t_stack *b, t_list **h);
+t_stack			*create_chunks(t_main m, t_stack a);
 
 // OPERATIONS
 int				execute(t_main *s, char *op);
@@ -79,7 +80,9 @@ int				stack_is_sort(t_stack s);
 int				find_min(t_stack s);
 int				find_max(t_stack s);
 int				min_pos(t_stack s);
+int				max_pos(t_stack s);
 int				is_already_sort(t_stack s);
+float			find_avg(int *a, int start, int end);
 
 // ERRORS
 int				error(t_main *s);

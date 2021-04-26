@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 01:04:51 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/21 23:37:22 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/26 16:32:08 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,18 @@ int				min_pos(t_stack s)
 	return (x);
 }
 
+int				max_pos(t_stack s)
+{
+	int		x;
+	int		min;
+
+	x = 0;
+	min = find_max(s);
+	while (s.arr[x] != min && x < (int)s.size)
+		x++;
+	return (x);
+}
+
 static int		choose_x(int x, size_t size)
 {
 	if (x == (int)size - 1)
@@ -83,4 +95,16 @@ int				is_already_sort(t_stack s)
 	x = stack_is_sort(tmp);
 	free(tmp.arr);
 	return (x);
+}
+
+float			find_avg(int *a, int start, int end)
+{
+	int		i;
+	int		sum;
+
+	sum = 0;
+	i = start;
+	while (i < end)
+		sum += a[i++];
+	return (sum / end - start);
 }
