@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 18:23:23 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/22 13:55:41 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/27 15:25:55 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int		four_or_five(t_stack *a, t_stack *b)
 
 	min = find_min(*a);
 	max = find_max(*a);
-	while (a->size > 3 && !(is_already_sort(*a)))
+	while (a->size > 3)
 		printf("%s\n", push(b, a, B));
 	if (a->size == 3)
 		three(a);

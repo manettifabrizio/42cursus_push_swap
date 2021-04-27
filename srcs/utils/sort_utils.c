@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 01:04:51 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/26 16:32:08 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:13:41 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,28 @@ int				is_already_sort(t_stack s)
 	return (x);
 }
 
-float			find_avg(int *a, int start, int end)
+int				*ft_arrdup_i(int *a, size_t size)
 {
 	int		i;
-	int		sum;
+	int		*b;
 
-	sum = 0;
-	i = start;
-	while (i < end)
-		sum += a[i++];
-	return (sum / end - start);
+	i = -1;
+	if (!(b = malloc(size * sizeof(int))))
+		return (NULL);
+	while (++i < (int)size)
+		b[i] = a[i];
+	return (b);
+}
+
+float			find_median(t_stack a)
+{
+	int		i;
+	int		med;
+	int		*b;
+
+	b = ft_sort_array_i(ft_arrdup_i(a.arr, a.size), a.size);
+	i = a.size / 2;
+	med = (b[i] + b[i + 1]) / 2;
+	free(b);
+	return (med);
 }

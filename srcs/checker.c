@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:41:26 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/22 00:42:44 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/27 15:31:56 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int				main(int ac, char **av)
 		printf("OK\n");
 	else
 		printf("KO\n");
+	// printf("Total ops : %d\n", m.ops_nbr);
 	free(m.a->arr);
 	free(m.b->arr);
 	return (0);

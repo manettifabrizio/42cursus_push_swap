@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:43:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/26 16:55:20 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:14:03 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int				find_max(t_stack s);
 int				min_pos(t_stack s);
 int				max_pos(t_stack s);
 int				is_already_sort(t_stack s);
-float			find_avg(int *a, int start, int end);
+float			find_median(t_stack a);
 
 // ERRORS
 int				error(t_main *s);
