@@ -1,43 +1,46 @@
 #!/bin/bash
 
-# make re
-declare -i count=$(($1));
-declare -i total=0; 
-declare -i tmp=0;
-declare -i min=1000000;
-declare -i max=0;
+rm -fr test/tests
+TESTS_NBR=$(($1))
+TOTAL=0
+TMP=0
+MIN=1000000
+MAX=0
 
-coucou()
+all()
 {
 	./push_swap $arg | ./checker $arg;
 }
-bite()
+
+operations()
 {
 	./push_swap $arg | wc -l
 }
 
-for i in $( eval echo {1..$count} )
+for i in $( eval echo {1..$TESTS_NBR} )
 	do 
-		arg=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`;
-		tmp=$(bite)
-		if [ $tmp -gt $max ];
+		arg=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
+		TMP=`./push_swap $arg | wc -l`
+		echo "$i. $arg" >> test/tests
+		if [ $TMP -gt $MAX ];
 		then
-			max=$tmp
-		elif [ $tmp -lt $min ];
+			MAX=$TMP
+		elif [ $TMP -lt $MIN ];
 		then
-			min=$tmp
+			MIN=$TMP
 		fi
-		arg2=$(coucou)
-		echo "$i / $count: $tmp | $arg2"
-		total+=$tmp
+		arg2=`./push_swap $arg | ./checker $arg`
+		echo "$i / $TESTS_NBR: $TMP | $arg2"
+		TOTAL=$((TOTAL + TMP))
 	done
+	
 
-if [ $min -eq 1000000 ];
+if [ $MIN -eq 1000000 ];
 then
-	min=0
+	MIN=0
 fi
 
-echo "min: $min"
-echo "max: $max"
+echo "min: $MIN"
+echo "max: $MAX"
 
-echo "scale=2; $total / $count" | bc
+echo "scale=2; $TOTAL / $TESTS_NBR" | bc

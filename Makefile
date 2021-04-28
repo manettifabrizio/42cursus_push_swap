@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/26 17:06:32 by fmanetti          #+#    #+#              #
-#    Updated: 2021/04/26 16:20:26 by fmanetti         ###   ########.fr        #
+#    Updated: 2021/04/28 14:49:57 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ FILES			=	operations/execute.c		\
 					sort/three_to_five.c		\
 					sort/chunks.c				\
 					sort/create_chunks.c		\
+					sort/optimize_rotation.c	\
 					utils/sort_utils.c			\
 					utils/create_stacks.c		\
 					utils/stack_utils.c			\

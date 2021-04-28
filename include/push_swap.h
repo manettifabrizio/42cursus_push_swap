@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:43:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/27 17:14:03 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/28 14:49:40 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int				create_stacks(char **av, t_main *m);
 int				three_to_five(t_main *m);
 int				chunks(t_main *m, t_stack *a, t_stack *b, t_list **h);
 t_stack			*create_chunks(t_main m, t_stack a);
+void			optimize_rotation(t_list **h);
 
 // OPERATIONS
 int				execute(t_main *s, char *op);

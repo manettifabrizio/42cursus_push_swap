@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 15:13:30 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/27 17:14:46 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/28 15:38:20 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_stack	*five(t_stack a)
 	med = find_median(a);
 	if (!(c = malloc(sizeof(t_stack))))
 		return (NULL);
-	if (!(c->arr = malloc(5 * sizeof(int))))
+	if (!(c->arr = malloc(6 * sizeof(int))))
 		return (NULL);
 	c->size = 6;
 	c->arr[0] = find_min(a);

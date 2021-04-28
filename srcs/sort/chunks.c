@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 18:23:49 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/27 16:18:37 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/28 14:20:04 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,8 @@ static int		find_to_push(t_stack a, int start, int end)
 		i--;
 	if (i > 0)
 		second = i;
-	// printf("first = %d second = %d\n", first, second);
-	if (first < second || second == -1)
+	// printf("first = %d second = %d\n", a.arr[first], a.arr[second]);
+	if (first < ((int)a.size - second) || second == -1)
 		return (first);
 	return (second);
 }
@@ -143,9 +143,11 @@ int				chunks(t_main *m, t_stack *a, t_stack *b, t_list **h)
 	int			pos;
 	int			num;
 	t_stack		*c;
+	// FILE		*f;
 
 	i = 0;
 	pos = 0;
+	// f = fopen("ciao", "w");
 	c = create_chunks(*m, *a);
 	// printf("size = %zu\n", c->size);
 	while ((c->size)-- > 1)
@@ -154,7 +156,7 @@ int				chunks(t_main *m, t_stack *a, t_stack *b, t_list **h)
 		{
 			// printf("topush = %d i = %d\n\n", a->arr[pos], i);
 			num = a->arr[pos];
-			if (i > (int)(a->size / 2))
+			if (pos > ((int)a->size / 2))
 			{
 				while (a->arr[0] != num)
 					add_elem_to_list(h, rev_rotate(a, A));
@@ -163,10 +165,14 @@ int				chunks(t_main *m, t_stack *a, t_stack *b, t_list **h)
 				while (a->arr[0] != num)
 					add_elem_to_list(h, rotate(a, A));
 			push_to_b(a, b, h);
+			// for(int i = 0; i < (int)a->size; i++)
+			// 	fprintf(f, "%d ", a->arr[i]);
+			// fprintf(f, "\n********************************************\n");
 			// print_stacks(*m, *a, *b);
 		}
 		i++;
 	}
+	// fclose(f);
 	//free_chunk
 	max_to_the_top(b, h);
 	while (b->size > 0)

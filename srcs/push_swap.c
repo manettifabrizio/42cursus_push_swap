@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 17:09:17 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/27 15:58:43 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/28 16:26:18 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		main(int ac, char **av)
 	head = NULL;
 	if (!(create_stacks(av, &m)) || !(choose_method(&m, &head)))
 		return (error(&m));
+	optimize_rotation(&head);
 	l = head;
 	while (l)
 	{
