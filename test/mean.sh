@@ -7,16 +7,6 @@ TMP=0
 MIN=1000000
 MAX=0
 
-all()
-{
-	./push_swap $arg | ./checker $arg;
-}
-
-operations()
-{
-	./push_swap $arg | wc -l
-}
-
 for i in $( eval echo {1..$TESTS_NBR} )
 	do 
 		arg=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`

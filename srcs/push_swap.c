@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 17:09:17 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/28 16:26:18 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/29 18:17:39 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int				choose_method(t_main *m, t_list **h)
 			printf("%s\n", ROTATE_A);
 		else if (m->size_max >= 3 && m->size_max <= 5)
 			return (three_to_five(m));
-		else if (m->size_max >= 6 && m->size_max < 500)
+		else if (m->size_max >= 6 && m->size_max <= 500)
 			chunks(m, m->a, m->b, h);
 	}
 	return (1);

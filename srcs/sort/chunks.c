@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 18:23:49 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/28 14:20:04 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/29 18:04:55 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void		max_to_the_top(t_stack *b, t_list **h)
 	max = find_max(*b);
 	if (pos > (int)(b->size / 2))
 	{
+		// printf("**********\n");
 		while (b->arr[0] != max)
 			add_elem_to_list(h, rev_rotate(b, B));
 	}
@@ -132,9 +133,9 @@ static int		find_to_push(t_stack a, int start, int end)
 	if (i > 0)
 		second = i;
 	// printf("first = %d second = %d\n", a.arr[first], a.arr[second]);
-	if (first < ((int)a.size - second) || second == -1)
+	// if (first <= ((int)a.size - second) || second == -1)
 		return (first);
-	return (second);
+	// return (second);
 }
 
 int				chunks(t_main *m, t_stack *a, t_stack *b, t_list **h)
@@ -150,18 +151,19 @@ int				chunks(t_main *m, t_stack *a, t_stack *b, t_list **h)
 	// f = fopen("ciao", "w");
 	c = create_chunks(*m, *a);
 	// printf("size = %zu\n", c->size);
+	// print_stacks(*m, *a, *b);
 	while ((c->size)-- > 1)
 	{
 		while ((pos = find_to_push(*a, c->arr[i], c->arr[i + 1])) >= 0)
 		{
 			// printf("topush = %d i = %d\n\n", a->arr[pos], i);
 			num = a->arr[pos];
-			if (pos > ((int)a->size / 2))
-			{
-				while (a->arr[0] != num)
-					add_elem_to_list(h, rev_rotate(a, A));
-			}
-			else
+			// if (pos > ((int)a->size / 2))
+			// {
+			// 	while (a->arr[0] != num)
+			// 		add_elem_to_list(h, rev_rotate(a, A));
+			// }
+			// else
 				while (a->arr[0] != num)
 					add_elem_to_list(h, rotate(a, A));
 			push_to_b(a, b, h);

@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 01:04:51 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/27 17:13:41 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/29 18:02:36 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int				is_already_sort(t_stack s)
 	return (x);
 }
 
-int				*ft_arrdup_i(int *a, size_t size)
+static int				*ft_arrdup_i(int *a, size_t size)
 {
 	int		i;
 	int		*b;
