@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 17:09:17 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/29 18:17:39 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/30 15:07:38 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int				choose_method(t_main *m, t_list **h)
 			printf("%s\n", ROTATE_A);
 		else if (m->size_max >= 3 && m->size_max <= 5)
 			return (three_to_five(m));
-		else if (m->size_max >= 6 && m->size_max <= 500)
+		else if (m->size_max >= 6)
 			chunks(m, m->a, m->b, h);
 	}
 	return (1);
@@ -51,7 +51,8 @@ int		main(int ac, char **av)
 	if (ac < 2)
 		return (0);
 	head = NULL;
-	if (!(create_stacks(av, &m)) || !(choose_method(&m, &head)))
+	m.is_opt = 0;
+	if (!(create_stacks(&m, av)) || !(choose_method(&m, &head)))
 		return (error(&m));
 	optimize_rotation(&head);
 	l = head;
@@ -62,4 +63,5 @@ int		main(int ac, char **av)
 	}
 	free(m.a);
 	free(m.b);
+	
 }

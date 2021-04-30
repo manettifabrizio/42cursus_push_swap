@@ -6,19 +6,26 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:05:38 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/22 00:29:16 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/30 14:28:07 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int				error(t_main *m)
+void			free_all(t_main *m)
 {
-	ft_putstr_fd(ERROR, STDERR_FILENO);
 	if (m->a)
 		free(m->a->arr);
 	if (m->b)
-	free(m->b->arr);
+		free(m->b->arr);
+	if (m->opt)
+		free(m->opt);
+}
+
+int				error(t_main *m)
+{
+	ft_putstr_fd(ERROR, STDERR_FILENO);
+	free_all(m);
 	return (0);
 }
 
@@ -29,7 +36,7 @@ int				check_stack(char *s)
 	i = -1;
 	while (s[++i])
 		if (!(ft_isdigit(s[i]) || ft_isspace(s[i]) ||
-			s[i] == '+' || s[i] == '-'))
+			((s[i] == '+' || s[i] == '-') && ft_isdigit(s[i + 1]))))
 			return (0);
 	return (1);
 }

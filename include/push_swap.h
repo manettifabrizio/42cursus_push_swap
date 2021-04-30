@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:43:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/28 14:49:40 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/30 17:40:00 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
-#define		NO_PRINT		0
-#define		A				1
-#define		B				2
+# define	NO_PRINT		0
+# define	A				1
+# define	B				2
+# define	SLEEP_TIME		1000000
+
+# define	CURSOR_HOME		"\e[H"
+# define	CLEAR_SCREEN	"\e[J"
 
 # define	SWAP_A			"sa"
 # define	SWAP_B			"sb"
@@ -37,9 +41,10 @@
 
 typedef struct 	s_options
 {
+	int			d;
 	int			v;
-	int			o;
 	int			c;
+	int			o;
 }				t_opt;
 
 typedef	struct	s_stack
@@ -56,11 +61,14 @@ typedef struct	s_main
 	size_t		size_max;
 	int			ops_nbr;
 	t_opt		*opt;
+	int			is_opt;
 }				t_main;
 
-int				create_stacks(char **av, t_main *m);
+int				create_stacks(t_main *m, char **av);
 
 // SORTING
+int				choose_rotation_b_a(int n, t_stack s);
+int				choose_rotation_a_b(int n, t_stack s);
 int				three_to_five(t_main *m);
 int				chunks(t_main *m, t_stack *a, t_stack *b, t_list **h);
 t_stack			*create_chunks(t_main m, t_stack a);

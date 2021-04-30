@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/26 17:06:32 by fmanetti          #+#    #+#              #
-#    Updated: 2021/04/28 14:49:57 by fmanetti         ###   ########.fr        #
+#    Updated: 2021/04/30 17:02:43 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ FILES_PATH		=	./srcs/
 
 FILES			=	operations/execute.c		\
 					operations/operations.c		\
+					sort/choose_rotation.c		\
 					sort/three_to_five.c		\
 					sort/chunks.c				\
 					sort/create_chunks.c		\

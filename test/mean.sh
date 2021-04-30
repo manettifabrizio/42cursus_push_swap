@@ -9,9 +9,9 @@ MAX=0
 
 for i in $( eval echo {1..$TESTS_NBR} )
 	do 
-		arg=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
+		arg=`ruby -e "puts (1..4).to_a.shuffle.join(' ')"`
+		echo -en "$arg\t\t"
 		TMP=`./push_swap $arg | wc -l`
-		echo "$i. $arg" >> test/tests
 		if [ $TMP -gt $MAX ];
 		then
 			MAX=$TMP

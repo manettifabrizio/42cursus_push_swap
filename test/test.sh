@@ -40,8 +40,8 @@ execute_tests()
 	else
 		while IFS= read -r ARG
 			do
-				LNS=`./push_swap $ARG | wc -l`
-				LNS=`echo $LNS | xargs`
+				OPS=`./push_swap $ARG`
+				LNS=`echo "$OPS" | wc -l | xargs`
 				if [ "$1" == "-a" ] || [ "$1" == "-ta" ] || [ "$1" == "-at" ]
 					then
 						echo -en "$ARG  $LNS"
@@ -56,7 +56,7 @@ execute_tests()
 					MIN=$LNS
 				fi
 				TOTAL=$((TOTAL + LNS))
-				TMP=`./push_swap $ARG | ./checker $ARG`
+				TMP=`echo "$OPS" | ./checker $ARG`
 				if [ "$TMP" != "OK" ];
 					then
 					((ERR++))
@@ -95,6 +95,7 @@ case $1 in
 	;;
 -t)
 	generate_tests
+	execute_tests $1
 	;;
 -at | -ta)
 	generate_tests

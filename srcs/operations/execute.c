@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 11:27:34 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/22 14:22:41 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/30 16:15:57 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,13 @@ int				execute(t_main *m, char *op)
 		free(op);
 		return (0);
 	}
-	if (m->opt->v)
+	if (m->opt->d)
 	{
+		usleep(SLEEP_TIME);
+		printf("%s%s", CURSOR_HOME, CLEAR_SCREEN);
 		printf("%s\n", op);
 		print_stacks(*m, *(m->a), *(m->b));
 	}
 	free(op);
-	// printf("size_a = %zu size_b = %zu size_max = %zu\n", m->a->size, m->b->size, m->size_max);
 	return (1);
 }
