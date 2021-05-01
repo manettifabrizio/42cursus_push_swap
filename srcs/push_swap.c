@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 17:09:17 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/30 15:07:38 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/01 21:50:56 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int		main(int ac, char **av)
 	if (ac < 2)
 		return (0);
 	head = NULL;
+	m.opt = NULL;
 	m.is_opt = 0;
 	if (!(create_stacks(&m, av)) || !(choose_method(&m, &head)))
 		return (error(&m));
@@ -58,10 +59,8 @@ int		main(int ac, char **av)
 	l = head;
 	while (l)
 	{
-		printf("%s\n", l->content);
+		printf("%s\n", (char*)(l->content));
 		l = l->next;
 	}
-	free(m.a);
-	free(m.b);
-	
+	free_all(&m);
 }

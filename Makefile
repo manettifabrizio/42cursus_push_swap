@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/26 17:06:32 by fmanetti          #+#    #+#              #
-#    Updated: 2021/04/30 17:02:43 by fmanetti         ###   ########.fr        #
+#    Updated: 2021/05/01 02:24:29 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,15 +19,19 @@ FILES_PATH		=	./srcs/
 
 FILES			=	operations/execute.c		\
 					operations/operations.c		\
+					operations/debug_mode.c		\
 					sort/choose_rotation.c		\
 					sort/three_to_five.c		\
 					sort/chunks.c				\
 					sort/create_chunks.c		\
 					sort/optimize_rotation.c	\
+					utils/options.c				\
 					utils/sort_utils.c			\
 					utils/create_stacks.c		\
 					utils/stack_utils.c			\
-					utils/check_errors.c
+					utils/check_errors.c		\
+					utils/print_stacks.c		\
+					utils/debug_utils.c
 
 HFILES			=	push_swap.h
 HFILES_PATH		=	./include/

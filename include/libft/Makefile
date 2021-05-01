@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 17:50:17 by fmanetti          #+#    #+#              #
-#    Updated: 2021/04/30 12:21:23 by fmanetti         ###   ########.fr        #
+#    Updated: 2021/05/01 21:46:20 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,7 @@ OBJB			=	$(BSOURCE:%.c=%.o)
 
 CC				= 	clang
 
-CFLAGS			=   -I $(HFILES_PATH) -Wall -Wextra -Werror
+CFLAGS			=   -I $(HFILES_PATH) -Wall -Wextra -Werror -fPIC
 FSANITIZE		= 	-g3 -O0 -fsanitize=address
 
 RED				=	\033[0;31m

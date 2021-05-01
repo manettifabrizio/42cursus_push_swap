@@ -6,63 +6,19 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 11:43:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/30 17:40:00 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/01 21:49:46 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include "libft/libft.h"
-
-# define	NO_PRINT		0
-# define	A				1
-# define	B				2
-# define	SLEEP_TIME		1000000
-
-# define	CURSOR_HOME		"\e[H"
-# define	CLEAR_SCREEN	"\e[J"
-
-# define	SWAP_A			"sa"
-# define	SWAP_B			"sb"
-# define	SWAP_AB			"ss"
-# define	PUSH_A			"pa"
-# define	PUSH_B			"pb"
-# define	ROTATE_A		"ra"
-# define	ROTATE_B		"rb"
-# define	ROTATE_AB		"rr"
-# define	REV_ROTATE_A	"rra"
-# define	REV_ROTATE_B	"rrb"
-# define	REV_ROTATE_AB	"rrr"
-
-# define	ERROR			"\e[0;31m\e[1mError\n\e[0m"
-# define	OK				"\e[0;32m\e[1mOK\e[0m"
-# define	KO				"\e[0;31m\e[1mKO\e[0m"
-
-typedef struct 	s_options
-{
-	int			d;
-	int			v;
-	int			c;
-	int			o;
-}				t_opt;
-
-typedef	struct	s_stack
-{
-	int			*arr;
-	size_t		size;
-}				t_stack;
-
-
-typedef struct	s_main
-{
-	t_stack		*a;
-	t_stack		*b;
-	size_t		size_max;
-	int			ops_nbr;
-	t_opt		*opt;
-	int			is_opt;
-}				t_main;
+# include <termios.h>
+# include "struct.h"
+# include "macros.h"
 
 int				create_stacks(t_main *m, char **av);
 
@@ -75,14 +31,16 @@ t_stack			*create_chunks(t_main m, t_stack a);
 void			optimize_rotation(t_list **h);
 
 // OPERATIONS
-int				execute(t_main *s, char *op);
+int				execute(t_main *m, char *op);
 char			*swap(t_stack *s, int type);
 char			*push(t_stack *s1, t_stack *s2, int type);
 char			*rotate(t_stack *s, int type);
 char			*rev_rotate(t_stack *s, int type);
+int				debug_mode(t_main *m, char **a);
 
 // UTILS
-void			print_stacks(t_main m, t_stack a, t_stack b);
+int				options(t_main *m, char *s);
+void			print_stacks(t_main m, size_t size_max, char *op);
 void			stack_scale(t_stack *s);
 void			stack_del_one(t_stack *s);
 int				stack_is_sort(t_stack s);
@@ -91,10 +49,15 @@ int				find_max(t_stack s);
 int				min_pos(t_stack s);
 int				max_pos(t_stack s);
 int				is_already_sort(t_stack s);
-float			find_median(t_stack a);
+char			**add_elem_to_arr(char **a, char *op);
+void			set_term_cano(struct termios *base_term);
+void			set_term_noncano(void);
 
 // ERRORS
 int				error(t_main *s);
 int				check_stack(char *s);
 int				check_dup(t_stack s);
 int				check_op(char *s);
+void			free_all(t_main *m);
+
+#endif

@@ -6,32 +6,11 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:57:46 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/21 23:55:29 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/04/30 22:50:32 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void			print_stacks(t_main m, t_stack a, t_stack b)
-{
-	int		i;
-
-	i = -1;
-	printf("a	b\n");
-	printf("-	-\n");
-	while (++i < (int)m.size_max)
-	{
-		if (i < (int)a.size)
-			printf("%d", a.arr[i]);
-		else
-			printf(" ");
-		printf("\t");
-		if (i < (int)b.size)
-			printf("%d", b.arr[i]);
-		printf("\n");
-	}
-	printf("-	-\n\n");
-}
 
 void			stack_scale(t_stack *s)
 {

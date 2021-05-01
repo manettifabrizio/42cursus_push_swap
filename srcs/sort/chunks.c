@@ -6,13 +6,13 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 18:23:49 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/30 17:43:30 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/01 01:41:49 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			add_elem_to_list(t_list **h, char *s)
+static int		add_elem_to_list(t_list **h, char *s)
 {
 	t_list	*new;
 

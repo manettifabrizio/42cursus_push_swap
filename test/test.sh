@@ -93,6 +93,9 @@ case $1 in
 -h)
 	help
 	;;
+-gt)
+	generate_tests
+	;;
 -t)
 	generate_tests
 	execute_tests $1

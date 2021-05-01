@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 16:39:07 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/30 18:02:26 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/01 18:58:05 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int		middle_pos_b_a(int n, t_stack s)
 	if (n < s.arr[0] && n > s.arr[s.size - 1])
 		return (0);
 	x = 0;
-	while (!(n > s.arr[x] && n < s.arr[x + 1]) && x < (int)s.size)
+	while ((x + 1) < (int)s.size && !(n > s.arr[x] && n < s.arr[x + 1]))
 		x++;
 	return (x);
 }
@@ -49,7 +49,7 @@ static int		middle_pos_a_b(int n, t_stack s)
 	if (n > s.arr[0] && n < s.arr[s.size - 1])
 		return (0);
 	x = 0;
-	while (!(n < s.arr[x] && n > s.arr[x + 1]) && x < (int)s.size)
+	while ((x + 1) < (int)s.size && !(n < s.arr[x] && n > s.arr[x + 1]))
 		x++;
 	return (x);
 }

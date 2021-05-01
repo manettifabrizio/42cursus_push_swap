@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:05:38 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/30 14:28:07 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/01 21:52:31 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 void			free_all(t_main *m)
 {
 	if (m->a)
+	{
 		free(m->a->arr);
+		free(m->a);
+	}
 	if (m->b)
+	{
 		free(m->b->arr);
+		free(m->b);
+	}
 	if (m->opt)
 		free(m->opt);
 }
