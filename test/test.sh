@@ -86,7 +86,7 @@ execute_tests()
 
 help()
 {
-	echo -e "${BOLD}Usage${RESET}: bash test/test.sh -aehtv"
+	echo -e "${BOLD}Usage${RESET}: bash test/test.sh -aeht"
 	echo -e "Those options are available:\n"
 	echo -e "\t${BOLD}-t${RESET}\t\$TEST_NBR \$INTERVAL\tGenerate \$TEST_NBR tests in interval \$INTERVAL"
 	echo -e "\t\tEx.\tbash test/test.sh -t 1000 1..100\n"

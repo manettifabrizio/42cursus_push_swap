@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 22:50:56 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/05/02 23:47:12 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/03 00:34:20 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 # define SWAP_A			"sa"
 # define SWAP_B			"sb"
-# define SWAP_AB			"ss"
+# define SWAP_AB		"ss"
 # define PUSH_A			"pa"
 # define PUSH_B			"pb"
 # define ROTATE_A		"ra"
