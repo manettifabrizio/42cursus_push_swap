@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrdup.c                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/30 12:17:46 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/05/02 23:13:49 by fmanetti         ###   ########.fr       */
+/*   Created: 2021/05/02 18:42:08 by fmanetti          #+#    #+#             */
+/*   Updated: 2021/05/02 23:13:40 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int				*ft_arrdup_i(int *a, size_t size)
+long			ft_atol(const char *s)
 {
-	int		i;
-	int		*b;
+	int		x;
+	int		c;
+	long	res;
+	long	sign;
 
-	i = -1;
-	if (!(b = malloc(size * sizeof(int))))
-		return (NULL);
-	while (++i < (int)size)
-		b[i] = a[i];
-	return (b);
+	x = 0;
+	c = 0;
+	res = 0;
+	sign = 1;
+	while (s[x] == ' ' || (s[x] >= 8 && s[x] <= 13))
+		x++;
+	if (s[x] == '-')
+		sign *= -1;
+	while (s[x + c] == '+' || s[x + c] == '-')
+		c++;
+	while (s[x + c] >= '0' && s[x + c] <= '9')
+	{
+		res *= 10;
+		res += (long)s[x + c] - '0';
+		x++;
+	}
+	if (c > 1)
+		return (0);
+	return (res * sign);
 }

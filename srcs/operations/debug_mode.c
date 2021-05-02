@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 02:00:55 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/05/01 19:48:12 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/02 23:33:56 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int				debug_mode(t_main *m, char **a)
 	while ((i = reading(m, a, i)) != -2)
 	{
 		if (i > tmp && i < (int)ft_arrlen(a))
-			execute(m, ft_strdup(a[i]));
+			execute(m, a[i]);
 		else if (i < tmp)
 			print_stacks(*m, m->size_max, a[i + 1]);
 		tmp = i;

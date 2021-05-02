@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 22:51:37 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/30 22:54:25 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/02 23:14:50 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft/libft.h"
 
-typedef struct 	s_options
+typedef struct	s_options
 {
 	int			c;
 	int			d;
@@ -28,7 +28,6 @@ typedef	struct	s_stack
 	int			*arr;
 	size_t		size;
 }				t_stack;
-
 
 typedef struct	s_main
 {

@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 16:39:07 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/05/01 18:58:05 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/02 23:22:05 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int				choose_rotation_b_a(int n, t_stack s)
 			return (1);
 	}
 	else
+	{
 		if (middle_pos_b_a(n, s) < (int)s.size / 2)
 			return (1);
+	}
 	return (0);
 }
 
@@ -67,7 +69,9 @@ int				choose_rotation_a_b(int n, t_stack s)
 			return (1);
 	}
 	else
+	{
 		if (middle_pos_a_b(n, s) < (int)s.size / 2)
 			return (1);
+	}
 	return (0);
 }

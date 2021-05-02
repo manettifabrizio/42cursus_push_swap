@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:05:38 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/05/01 21:52:31 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/02 23:33:02 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,29 @@ int				error(t_main *m)
 	return (0);
 }
 
-int				check_stack(char *s)
+char			**check_stack(char *s)
 {
 	int		i;
+	long	n;
+	char	**tmp;
 
 	i = -1;
 	while (s[++i])
 		if (!(ft_isdigit(s[i]) || ft_isspace(s[i]) ||
 			((s[i] == '+' || s[i] == '-') && ft_isdigit(s[i + 1]))))
-			return (0);
-	return (1);
+			return (NULL);
+	i = -1;
+	tmp = ft_split(s, ' ');
+	while (tmp[++i])
+	{
+		n = ft_atol(tmp[i]);
+		if (n < INT_MIN || n > INT_MAX)
+		{
+			ft_free_array(tmp);
+			return (NULL);
+		}
+	}
+	return (tmp);
 }
 
 int				check_dup(t_stack s)

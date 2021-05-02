@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 01:58:01 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/05/01 01:59:54 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/02 23:33:07 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int		check_options(char *s, t_opt *opt)
 		else
 			return (0);
 	}
-	if (i == 1)
+	if (i == 1 || (opt->d && opt->v))
 		return (0);
 	else
 		return (1);

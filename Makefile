@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/26 17:06:32 by fmanetti          #+#    #+#              #
-#    Updated: 2021/05/01 02:24:29 by fmanetti         ###   ########.fr        #
+#    Updated: 2021/05/02 21:21:51 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,31 +54,52 @@ FSANITIZE		= 	-g3 -O0 -fsanitize=address
 
 RED				=	\033[0;31m
 GREEN			=	\033[0;32m
-NO_COLOR		=	\033[0m
+BOLD			=	\033[1m
+RESET		=	\033[0m
 
 all: $(NAME) $(CHECK)
 
 $(NAME): $(PUSH_SWAP) $(OBJ) $(HEADERS) $(LIBRARY)
 	@printf "[ $(NAME) ] Compiling...\r"
 	@($(CC) -o $(NAME) $(PUSH_SWAP) $(SOURCE) $(LIBRARY) $(CFLAGS))
-	@printf "[ $(NAME) ] Created $(GREEN)Successfully\n$(NO_COLOR)" $(SUCCESS)
 
 $(CHECK): $(CHECKER) $(OBJ) $(HEADERS) $(LIBRARY)
 	@printf "[ $(CHECK) ] Compiling...\r"
 	@($(CC) -o $(CHECK) $(CHECKER) $(SOURCE) $(LIBRARY) $(CFLAGS))
-	@printf "[ $(CHECK) ] Created $(GREEN)Successfully\n$(NO_COLOR)" $(SUCCESS)
+	@printf "${GREEN}"
+	@printf "                                oooo                                                                 \n"
+	@printf "                                '888                                                                 \n"
+	@printf "oo.ooooo.  oooo  oooo  .oooo.o  888 .oo.                .oooo.o oooo oooo    ooo  .oooo.   oo.ooooo. \n"
+	@printf "888' '88b '888  '888  d88(  '8  888P'Y88b              d88(  '8  '88. '88.  .8'  'P  )88b  888' '88b \n"
+	@printf "888   888  888   888  'Y88b.    888   888              'Y88b.     '88..]88..8'    .oP'888  888   888 \n"
+	@printf "888   888  888   888  o.  )88b  888   888              o.  )88b    '888'888'     d8(  888  888   888 \n"
+	@printf "888bod8P'  'V88V'V8P'  8'888P' o888o o888o ooooooooooo  8'888P'     '8'  '8'     'Y888'8o  888bod8P' \n"
+	@printf "888                                                                                        888       \n"
+	@printf "o888o                                                                                      o888o     \n"
+	@printf "$(RESET)"
+	@printf "┏┓ ╻ ╻   ┏━╸┏┳┓┏━┓┏┓╻┏━╸╺┳╸╺┳╸╻     ┏━╸┏━┓┏┳┓┏━┓╻╻  ┏━╸╺┳┓      $(GREEN)┏━┓╻ ╻┏━╸┏━╸┏━╸┏━┓┏━┓┏━╸╻ ╻╻  ╻  ╻ ╻\n$(RESET)"
+	@printf "┣┻┓┗┳┛   ┣╸ ┃┃┃┣━┫┃┗┫┣╸  ┃  ┃ ┃     ┃  ┃ ┃┃┃┃┣━┛┃┃  ┣╸  ┃┃      $(GREEN)┗━┓┃ ┃┃  ┃  ┣╸ ┗━┓┗━┓┣╸ ┃ ┃┃  ┃  ┗┳┛\n$(RESET)"
+	@printf "┗━┛ ╹    ╹  ╹ ╹╹ ╹╹ ╹┗━╸ ╹  ╹ ╹     ┗━╸┗━┛╹ ╹╹  ╹┗━╸┗━╸╺┻┛      $(GREEN)┗━┛┗━┛┗━╸┗━╸┗━╸┗━┛┗━┛╹  ┗━┛┗━╸┗━╸ ╹ \n$(RESET)"
+	@printf "See '$(BOLD)make help$(RESET)' for checker options or '$(BOLD)bash test/test.sh -h$(RESET)' for tester options.\n"
 
 san: $(NAME)_san $(CHECK)_san
 
 $(NAME)_san: $(PUSH_SWAP) $(OBJ) $(HEADERS) $(LIBRARY)
 	@printf "[ $(NAME) ] Compiling with fsanitize...\r"
 	@($(CC) -o $(NAME) $(PUSH_SWAP) $(SOURCE) $(LIBRARY) $(CFLAGS) $(FSANITIZE))
-	@printf "[ $(NAME) ] Created $(GREEN)Successfully$(NO_COLOR) with fsanitize\n" $(SUCCESS)
+	@printf "[ $(NAME) ] Created $(GREEN)Successfully$(RESET) with fsanitize\n" $(SUCCESS)
 
 $(CHECK)_san: $(CHECKER) $(OBJ) $(HEADERS) $(LIBRARY)
 	@printf "[ $(CHECK) ] Compiling with fsanitize...\r"
 	@($(CC) -o $(CHECK) $(CHECKER) $(SOURCE) $(LIBRARY) $(CFLAGS) $(FSANITIZE))
-	@printf "[ $(CHECK) ] Created $(GREEN)Successfully$(NO_COLOR) with fsanitize\n" $(SUCCESS)
+	@printf "[ $(CHECK) ] Created $(GREEN)Successfully$(RESET) with fsanitize\n" $(SUCCESS)
+
+help:
+	@printf "$(BOLD)Usage:$(RESET) ARG=\"1 2 3\"; ./push_swap $$"ARG" | ./checker $$"ARG"\n"
+	@printf "./checker  [ -dcov ] [ -c activate colors ]\n"
+	@printf "                     [ -d display mode ]\n"
+	@printf "                     [ -o print number of operations ]\n"
+	@printf "                     [ -v debug mode ] [ arguments ]\n"
 
 lib:
 	@make re bonus -C $(LIB_PATH)
@@ -86,13 +107,13 @@ lib:
 
 clean:
 	@/bin/rm -f $(OBJ)
-	@printf "Object files $(RED)removed\n$(NO_COLOR)"
+	@printf "Object files $(RED)removed\n$(RESET)"
 
 fclean: clean
 	@/bin/rm -rf $(NAME)* $(CHECK)*
 	@/bin/rm -rf .vscode
-	@printf "[ $(NAME) ] $(RED)removed\n$(NO_COLOR)"
-	@printf "[ $(CHECK) ] $(RED)removed\n$(NO_COLOR)"
+	@printf "[ $(NAME) ] $(RED)removed\n$(RESET)"
+	@printf "[ $(CHECK) ] $(RED)removed\n$(RESET)"
 
 re: fclean all
 

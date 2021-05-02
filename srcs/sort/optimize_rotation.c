@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 14:25:28 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/30 11:52:12 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/02 23:22:43 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void		replace_elems(t_list **elem, int skip, int x, char *s)
 	while (l && x--)
 	{
 		tmp = l;
-		free(l->content);
 		l = l->next;
 		free(tmp);
 	}

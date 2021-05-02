@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 01:56:41 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/05/01 13:19:19 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/02 23:23:48 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char			**add_elem_to_arr(char **a, char *op)
 	{
 		if (!(tmp = malloc(2 * sizeof(char*))))
 			return (NULL);
-		tmp[0] = op;
+		tmp[0] = ft_strdup(op);
 		tmp[1] = NULL;
 	}
 	else
@@ -59,7 +59,7 @@ char			**add_elem_to_arr(char **a, char *op)
 		if (!(tmp = malloc((size + 2) * sizeof(char*))))
 			return (NULL);
 		copy_array(tmp, a);
-		tmp[size] = op;
+		tmp[size] = ft_strdup(op);
 		tmp[size + 1] = NULL;
 		ft_free_array(a);
 	}

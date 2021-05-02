@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 11:27:34 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/05/01 19:48:21 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/02 23:33:22 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,19 +74,13 @@ static char		*select_op(t_main *m, char *op)
 
 int				execute(t_main *m, char *op)
 {
-	if (!(check_op(op)))
+	if (!(check_op(op)) || !(select_op(m, op)))
 		return (0);
-	if (!(select_op(m, op)))
-	{
-		free(op);
-		return (0);
-	}
 	if (m->opt->d || m->opt->v)
 	{
 		if (m->opt->d)
 			usleep(SLEEP_TIME);
 		print_stacks(*m, m->size_max, op);
 	}
-	free(op);
 	return (1);
 }

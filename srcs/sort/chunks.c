@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 18:23:49 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/05/01 01:41:49 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/02 23:22:23 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ int				chunks(t_main *m, t_stack *a, t_stack *b, t_list **h)
 		while ((pos = find_to_push(*a, c->arr[i], c->arr[i + 1])) >= 0)
 		{
 			num = a->arr[pos];
-				while (a->arr[0] != num)
-					add_elem_to_list(h, rotate(a, A));
+			while (a->arr[0] != num)
+				add_elem_to_list(h, rotate(a, A));
 			push_to_b(a, b, h);
 		}
 		i++;
@@ -99,5 +99,7 @@ int				chunks(t_main *m, t_stack *a, t_stack *b, t_list **h)
 	max_to_the_top(b, h);
 	while (b->size > 0)
 		add_elem_to_list(h, push(a, b, A));
+	free(c->arr);
+	free(c);
 	return (1);
 }

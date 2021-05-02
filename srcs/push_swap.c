@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 17:09:17 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/05/01 21:50:56 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/02 23:34:07 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int		only_rotation(t_stack *a)
 	return (0);
 }
 
-int				choose_method(t_main *m, t_list **h)
+static int		choose_method(t_main *m, t_list **h)
 {
 	if (stack_is_sort(*(m->a)) || only_rotation(m->a))
 		return (1);
@@ -42,10 +42,24 @@ int				choose_method(t_main *m, t_list **h)
 	return (1);
 }
 
-int		main(int ac, char **av)
+static void		print_and_free_list(t_list **head)
+{
+	t_list	*l;
+	t_list	*tmp;
+
+	l = *head;
+	while (l)
+	{
+		tmp = l;
+		printf("%s\n", (char*)(l->content));
+		l = l->next;
+		free(tmp);
+	}
+}
+
+int				main(int ac, char **av)
 {
 	t_main	m;
-	t_list	*l;
 	t_list	*head;
 
 	if (ac < 2)
@@ -56,11 +70,6 @@ int		main(int ac, char **av)
 	if (!(create_stacks(&m, av)) || !(choose_method(&m, &head)))
 		return (error(&m));
 	optimize_rotation(&head);
-	l = head;
-	while (l)
-	{
-		printf("%s\n", (char*)(l->content));
-		l = l->next;
-	}
+	print_and_free_list(&head);
 	free_all(&m);
 }

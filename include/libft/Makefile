@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 17:50:17 by fmanetti          #+#    #+#              #
-#    Updated: 2021/05/01 21:46:20 by fmanetti         ###   ########.fr        #
+#    Updated: 2021/05/02 18:47:59 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ FILES			=	ft_arrlen.c			\
 					ft_arrdup.c			\
 					ft_atof.c			\
 					ft_atoi.c			\
+					ft_atol.c			\
 					ft_bzero.c			\
 					ft_calloc.c			\
 					ft_free_array.c		\

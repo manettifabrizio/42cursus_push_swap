@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 17:36:37 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/04/27 14:23:33 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/02 23:33:29 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ char			*swap(t_stack *s, int type)
 	if (s->size > 1)
 		ft_swap(&(s->arr[0]), &(s->arr[1]));
 	if (type == A)
-		return (ft_strdup(SWAP_A));
+		return (SWAP_A);
 	else if (type == B)
-		return (ft_strdup(SWAP_B));
+		return (SWAP_B);
 	return ("");
 }
 
@@ -32,9 +32,9 @@ char			*push(t_stack *s1, t_stack *s2, int type)
 		stack_del_one(s2);
 	}
 	if (type == A)
-		return (ft_strdup(PUSH_A));
+		return (PUSH_A);
 	else if (type == B)
-		return (ft_strdup(PUSH_B));
+		return (PUSH_B);
 	return ("");
 }
 
@@ -52,9 +52,9 @@ char			*rotate(t_stack *s, int type)
 		s->arr[s->size - 1] = tmp;
 	}
 	if (type == A)
-		return (ft_strdup(ROTATE_A));
+		return (ROTATE_A);
 	else if (type == B)
-		return (ft_strdup(ROTATE_B));
+		return (ROTATE_B);
 	return ("");
 }
 
@@ -72,8 +72,8 @@ char			*rev_rotate(t_stack *s, int type)
 		s->arr[0] = tmp;
 	}
 	if (type == A)
-		return (ft_strdup(REV_ROTATE_A));
+		return (REV_ROTATE_A);
 	else if (type == B)
-		return (ft_strdup(REV_ROTATE_B));
+		return (REV_ROTATE_B);
 	return ("");
 }
