@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:38:42 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/05/02 18:57:11 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/03 13:52:40 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,31 @@ static int		create_arr_i(t_stack *a, char **av, int is_opt)
 	return (1);
 }
 
+static int		str_is_empty(char *s)
+{
+	int		i;
+
+	i = -1;
+	while (s[++i])
+		if (!(ft_isspace(s[i])))
+			return (0);
+	if (i == 0 || i == (int)ft_strlen(s))
+		return (1);
+	return (0);
+}
+
 static int		str_to_arr_i(t_main *m, char **av, int is_opt)
 {
 	int			i;
 	char		**tmp;
 
+	i = (is_opt == 1) ? 2 : 1;
+	if (str_is_empty(av[i]))
+		return (0);
 	if (!(m->a = malloc(sizeof(t_stack))))
 		return (0);
-	i = (is_opt == 1) ? 1 : 0;
 	m->a->size = 0;
+	i = 0;
 	while (av[++i])
 	{
 		tmp = ft_split(av[i], ' ');

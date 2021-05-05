@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 17:05:38 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/05/02 23:33:02 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/03 13:59:46 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ char			**check_stack(char *s)
 	i = -1;
 	while (s[++i])
 		if (!(ft_isdigit(s[i]) || ft_isspace(s[i]) ||
-			((s[i] == '+' || s[i] == '-') && ft_isdigit(s[i + 1]))))
+		((s[i] == '+' || s[i] == '-') && ft_isdigit(s[i + 1]))) ||
+		(i > 0 && (s[i] == '+' || s[i] == '-') && !(ft_isspace(s[i - 1]))))
 			return (NULL);
 	i = -1;
 	tmp = ft_split(s, ' ');

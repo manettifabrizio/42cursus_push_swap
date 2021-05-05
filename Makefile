@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/26 17:06:32 by fmanetti          #+#    #+#              #
-#    Updated: 2021/05/02 21:21:51 by fmanetti         ###   ########.fr        #
+#    Updated: 2021/05/03 12:10:11 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ LIBRARY			=	$(addprefix $(LIB_PATH), $(LIB))
 
 OBJ				=	$(PUSH_SWAP:%.c=%.o) $(CHECKER:%.c=%.o) $(SOURCE:%.c=%.o)
 
-CC				= 	gcc
+CC				= 	clang
 
 CFLAGS			=   -I $(HFILES_PATH) -Wall -Wextra -Werror
 FSANITIZE		= 	-g3 -O0 -fsanitize=address
