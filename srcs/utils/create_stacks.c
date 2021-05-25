@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 21:38:42 by fmanetti          #+#    #+#             */
-/*   Updated: 2021/05/03 13:52:40 by fmanetti         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:20:40 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,10 @@ static int		str_to_arr_i(t_main *m, char **av, int is_opt)
 	if (!(m->a = malloc(sizeof(t_stack))))
 		return (0);
 	m->a->size = 0;
-	i = 0;
+	i -= 1;
 	while (av[++i])
 	{
+
 		tmp = ft_split(av[i], ' ');
 		m->a->size += ft_arrlen(tmp);
 		ft_free_array(tmp);
